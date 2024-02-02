@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><cvsu-homepage class="pn"></cvsu-homepage></title>
+  <title><cvsu-aboutus class="png"></cvsu-aboutus>
+  <title><cvsu-gallery1 class="png"></cvsu-gallery1></title>
+  <title><cvsu-gallery2 class="png"></cvsu-gallery2></title>
+  <title><cvsu-contactus1 class="png"></cvsu-contactus1></title>
+  <title><cvsu-contactus2 class="png"></cvsu-contactus2></title>
+  <style>
+    #carousel-container {
+      width: 70%;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    #carousel {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      width: 100%;
+      flex: 0 0 auto;
+    }
+
+    button {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="carousel-container">
+  <div id="carousel">
+    <div class="carousel-item"><img src="image1.jpg" alt="Image 1"></div>
+    <div class="carousel-item"><img src="image2.jpg" alt="Image 2"></div>
+    <div class="carousel-item"><img src="image3.jpg" alt="Image 3"></div>
+    <!-- Add more images as needed -->
+  </div>
+</div>
+
+<button onclick="prevSlide()">Previous</button>
+<button onclick="nextSlide()">Next</button>
+
+<script>
+  const carousel = document.getElementById('carousel');
+  const slides = document.querySelectorAll('.carousel-item');
+  let currentIndex = 0;
+
+  function updateCarousel() {
+    const newTransformValue = -currentIndex * 100 + '%';
+    carousel.style.transform = 'translateX(' + newTransformValue + ')';
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % slides.length;
+    updateCarousel();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    updateCarousel();
+  }
+
+  // Automatic carousel transition (optional)
+  setInterval(nextSlide, 3000); // Change slide every 3 seconds
+</script>
+
+</body>
+</html>
